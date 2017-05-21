@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./socket.io.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1>Socket.io</h1>
+    <div id="chatroom" style="width:600px;height:400px;border:1px solid #f00;"></div>
+    <input type="text" name='' id='sayinput'>
+</body>
+<script>
+    var iosocket=null;
+    window.onload=function(){
+        iosocket=io.connect('http://localhost:9000');
+        iosocket.on('connect',function(){
+            iosocket.send('hello,from ioclient');
+        })
+        iosocket.on('message',function(message){
+            var chatroom=document.querySelector('#chatroom');
+            chatroom.innerHTML+=message+'<br/>';
+        })
+        iosocket.on('disconnect',function(){
+            console.log('guanbi')
+        })
+
+        function send(){
+            iosocket.send(sayinput.value);
+            sayinput.value='';
+        }
+        document.onkeyup=function(event){
+            if(event.keyCode==13){
+                send()
+            }
+        }
+
+    }
+</script>
+</html>
