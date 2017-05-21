@@ -33,6 +33,7 @@ dist/
 # node.js
 #
 socketstudy/node_modules/
+moviePro/node_modules/
 node_modules/
 npm-debug.log
 yarn-error.log
