@@ -31,7 +31,7 @@ chatserver.on('connection',function(client){
 
 function broadcast(msg,client){
     for(var key in clientMap){
-        clientMap[key].send(client.name+'say:'+msg);
+        clientMap[key].write(client.name+'say:'+msg);
     }
 }
 
