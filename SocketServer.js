@@ -17,13 +17,13 @@ chatserver.on('connection',function(client){
     })
 
     client.on('error',function(e){
-        console.log('client error'+e);
+        
         client.end()
     })
 
     client.on('close',function(){
         delete clientMap[client.name];
-        console.log(client.name+'xiaxian');
+        
         broadcast(client.name+'下线',client);
     })
 
