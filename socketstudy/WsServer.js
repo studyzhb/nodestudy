@@ -14,7 +14,7 @@ wss.on('connection',function(ws){
 
     ws.on('close',function(){
         console.log('likai');
-        global.gc();//垃圾回收方法
+        // global.gc();//垃圾回收方法
     })
 })
 
